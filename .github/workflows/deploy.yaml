@@ -1,0 +1,29 @@
+on:
+  push:
+    paths: 'index.md'
+
+name: deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - run: |
+        mkdir _site
+        pandoc index.md -o _site/index.html
+
+      - name: Deploy to GitHub pages 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          clean: true
+          branch: gh-pages
+          folder: _site
