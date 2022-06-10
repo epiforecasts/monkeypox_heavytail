@@ -1,6 +1,6 @@
 on:
   push:
-    paths: 'index.md'
+    branches: [main, master]
 
 name: deploy
 
