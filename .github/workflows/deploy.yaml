@@ -18,8 +18,8 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v2
 
       - run: |
-        mkdir _site
-        pandoc index.md -o _site/index.html
+          mkdir _site
+          pandoc index.md -o _site/index.html
 
       - name: Deploy to GitHub pages 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
