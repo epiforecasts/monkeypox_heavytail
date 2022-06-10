@@ -21,9 +21,7 @@ jobs:
 
       - name: Render site
         run: |
-          quarto render index.qmd
-          mkdir _site
-          mv index.html _site
+          quarto render
 
       - name: Deploy to GitHub pages 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
